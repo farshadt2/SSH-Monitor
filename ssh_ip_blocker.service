@@ -1,0 +1,19 @@
+[Unit]
+Description=SSH IP Blocker with Geo Detection (reads CSV, blocks via ufw/iptables)
+After=network-online.target ssh-monitor.service
+Wants=network-online.target ssh-monitor.service
+StartLimitIntervalSec=0
+ 
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/ssh-security
+ExecStart=/usr/bin/python3 /opt/ssh-security/ssh_ip_blocker.py
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=ssh-ip-blocker
+ 
+[Install]
+WantedBy=multi-user.target

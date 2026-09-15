@@ -1,0 +1,18 @@
+[Unit]
+Description=SSH Failed Login Monitor (logs failed attempts to CSV)
+After=network.target
+StartLimitIntervalSec=0
+ 
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/ssh-security
+ExecStart=/usr/bin/python3 /opt/ssh-security/ssh_monitor.py
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=ssh-monitor
+ 
+[Install]
+WantedBy=multi-user.target
