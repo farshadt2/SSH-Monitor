@@ -1,6 +1,6 @@
 # SSH-Monitor
-## SSH Failed-Login Monitor + Geo-Aware IP Blocker
 
+### SSH Failed-Login Monitor + Geo-Aware IP Blocker
 
 Two cooperating scripts that watch /var/log/auth.log for failed SSH logins and automatically block offending IPs via ufw/iptables, with per-country attempt thresholds and automatic unblocking after a set duration.
 
